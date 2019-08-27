@@ -12,13 +12,28 @@
     <style type="text/css" media="all">
       body { margin-top: 30px; }
     </style>
+
+    <link rel="stylesheet" href="/tests/lib/jasmine-2.3.4/jasmine.css">
+    <script src="/tests/lib/jasmine-2.3.4/jasmine.js"></script>
+    <script src="/tests/lib/jasmine-2.3.4/jasmine-html.js"></script>
+    <script src="/tests/lib/jasmine-2.3.4/boot.js"></script>
+    <script src="/tests/app_spec.js"></script>
+
   </head>
   <body>
-    <div class='container'>
-      <h1>It works!</h1>
-      <div>
-        <span>You're ready to start!</span>
-        <span>Skeleton 2, jQuery 2, and AWS Libraries are included.</span>
+    <div class='markup'>
+      <div class='view-container container'>
+        <div class='landing-view'>
+          <div class="row">
+            <div class="one-half column">
+              <h3>Learn JavaScript, one puzzle at a time.</h3>
+              <a href="" class="button button-primary">Start Now!</a>
+            </div>
+            <div class="one-half column">
+              <img src="/images/HeroImage.jpg"/>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
