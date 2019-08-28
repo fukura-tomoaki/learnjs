@@ -15,39 +15,7 @@ learnjs.ploblems = [
 ];
 //}
     
-learnjs.problemView = function(hash){
-    var problemView = $('<div class = "problem-view">').text('Coming soon!');
-    $('.view-container').empty().append(problemView);
-}
 
-learnjs.showView = function (hash) {
-    var routes ={
-        '#problem': learnjs.problemView
-    };
-    var hashParts = hash.split('-');
-    var viewFn = routes[hashParts[0]];
-    if (viewFn) {
-        $('.view-container').empty().append(viewFn(hashParts[1]));
-    }   
-}
-
-learnjs.problemView = function(problemNumber){
-    var title = 'Problem #' + problemNumber + ' Coming soon!';
-    return $('<div class="problem-view">').text(title);
-}
-
-learnjs.appOnReady = function(){
-    window.onhashchange = function() {
-        learnjs.showView(window.location.hash);
-    };
-    learnjs.showView(window.location.hash);
-}
-
-learnjs.problemView = function(problemNumber){
-    var view = $('.templates .problem-view').clone();
-    view.find('.title').text('Problem #' + problemNumber + ' Comming Soon!')
-    return view;
-}
 
 // 問題データをバインド
 learnjs.applyObject = function(obj, elem){
@@ -55,7 +23,6 @@ learnjs.applyObject = function(obj, elem){
         elem.find('[data-name="'+ key +'"]').text(obj[key]);
     }
 };
-
 
 learnjs.problemView = function(data){
     var problemNumber = parseInt(data, 10);
