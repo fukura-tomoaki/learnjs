@@ -60,6 +60,26 @@ learnjs.applyObject = function(obj, elem){
 learnjs.problemView = function(data){
     var problemNumber = parseInt(data, 10);
     var view = $('.templates .problem-view').clone();
+    var problemData = learnjs.ploblems[problemNumber-1];
+    var resultFlash = view.find('.result');
+
+    // 解答のチェック
+    function checkAnswer() {
+        var answer = view.find('.answer').val();
+        var test = problemData.code.replace('__',answer) + '; problem();';
+        return eval(test);
+    }
+
+    function checkAnswerClick() {
+        if(checkAnswer()) {
+            resultFlash.test('Correct!');
+        } else {
+            resultFlash.test('Incorrect!');
+        }
+        return false;
+    }
+
+    view.find('.check-btn').click(checkAnswerClick);
     view.find('.title').text('Problem #' + problemNumber);
     learnjs.applyObject(learnjs.ploblems[problemNumber-1], view);
     return view;

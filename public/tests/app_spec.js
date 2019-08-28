@@ -30,19 +30,33 @@ describe("LearnJs",function() {
 
     describe('problem view',function(){
         var view;
+        beforeEach(function() {
+          view = learnjs.problemView('1');
+        });
+
         it('has a title that include the problem number',function(){
-            view = learnjs.problemView('1');
-            //expect(view.find('.title').text()).toEqual('Problem #1');
+            expect(view.find('.title').text()).toEqual('Problem #1');
         });
 
         it('show the description',function(){
-            var view = learnjs.showView("problem #1");
- //           expect(view.find('[data-name="description"]').text()).toEqual('What is truth?');
+            expect(view.find('[data-name="description"]').text()).toEqual('What is truth?');
         });
 
         it('show the problem code',function(){
-            var view = learnjs.showView("problem #1");
-//            expect(view.find('[data-name="code"]').text()).toEqual('function problem() {return __;}');
+            expect(view.find('[data-name="code"]').text()).toEqual('function problem() {return __;}');
         })
+        describe('answer aection', function(){    
+            it('can check a correct answer by hitting a button', function(){
+                view.find('.answer').val('true');
+                view.find('.check-btn').click();
+                expect(view.find('.result').text()).toEqual('Correct!');
+            });
+    
+            it('reject an incorrect answer',function(){
+                view.find('.answer').val('false');
+                view.find('.check-btn').click();
+                expect(view.find('.result').text()).toEqual('Incorrect!');
+            });
+        });
     });
 });
